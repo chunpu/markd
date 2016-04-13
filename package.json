@@ -4,7 +4,8 @@
   "description": "simple markdown server with markdown preview",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+	"build": "webpack lib/markdown-preview.js --output-file public/markdown-preview.js"
   },
   "author": "",
   "license": "ISC",

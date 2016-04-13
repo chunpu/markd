@@ -1,6 +1,7 @@
 var express = require('express')
 var path = require('path')
 var _ = require('lodash')
+var fs = require('fs')
 var app = express()
 
 var port = 8079
@@ -12,14 +13,22 @@ app
 		var basename = path.basename(req.url)
 		var extname = path.extname(basename)
 		console.log(extname)
-		if (_.includes(['.md', '.markdown'], extname)) {
-			app.locals.pretty = true
-			res.render('markdown.jade', {
-				markdown: 'xxxx',
-				title: basename
-			})
-			//res.send('xx')
-		}
+		fs.readFile(path.join('files', basename), function(err, buf) {
+			if (err) {
+				res.send(404, err)
+			} else {
+				var str = buf + ''
+				if (_.includes(['.md', '.markdown'], extname)) {
+					res.render('markdown.jade', {
+						markdown: str,
+						title: basename
+					})
+					//res.send('xx')
+				} else {
+					res.send(str)
+				}
+			}
+		})
 	})
 	.use('/public', express.static(path.join(__dirname, '/public')))
 	.listen(port, function(err) {
@@ -29,3 +38,5 @@ app
 			console.log('markdown server listen: %d', port)
 		}
 	})
+
+app.locals.pretty = true
