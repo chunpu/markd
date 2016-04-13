@@ -1,0 +1,16 @@
+{
+  "name": "markd",
+  "version": "1.0.1",
+  "description": "simple markdown server with markdown preview",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.4",
+    "lodash": "^4.10.0",
+    "marked": "^0.3.5"
+  }
+}
