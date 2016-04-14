@@ -24,16 +24,17 @@ app
 	.engine('jade', require('jade').__express)
 	.set('views', path.join(__dirname, 'views'))
 	.use('/preview', function(req, res, next) {
-		var basename = path.basename(req.url)
+		var pathname = decodeURIComponent(req.path)
+		console.log('path', pathname)
+		var basename = path.basename(pathname)
 		var extname = path.extname(basename)
 		console.log(extname)
-		fs.readFile(path.join('files', basename), function(err, buf) {
+		fs.readFile(path.join('files', pathname), function(err, buf) {
 			if (err) {
 				return res.send(404, err)
 			} else {
 				var str = buf + ''
 				if (_.includes(['.md', '.markdown'], extname)) {
-					console.log(11111111111111111)
 					marked(str, _.once(function(err, content) {
 						if (!err) {
 							console.log('ok')
@@ -45,9 +46,8 @@ app
 							return res.send(500, 'markdown parser fucked up')
 						}
 					}))
-					//res.send('xx')
 				} else {
-					// return res.send(str)
+					return res.send(str)
 				}
 			}
 		})

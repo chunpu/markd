@@ -2,7 +2,7 @@
   "name": "markd",
   "version": "1.1.0",
   "description": "simple markdown server with markdown preview",
-  "main": "index.js",
+  "main": "markd.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack lib/markdown-preview.js --output-file public/markdown-preview.js"
