@@ -85,6 +85,17 @@ code {
 	font-family: "Source Code Pro",monospace;
 }
 
+table {
+	margin-bottom: 20px;
+	border-collapse: collapse;
+}
+
+th, td {
+    padding: .5em;
+    border: 1px solid #ddd;
+    line-height: 1.5;
+}
+
 /*green*/
 
 .nxxxxxx
