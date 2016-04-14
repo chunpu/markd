@@ -1,0 +1,200 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+.main {
+	width: 740px;
+	margin: 0 auto;
+}
+
+.preview {
+	font-family: 'Helvetica Neue', Arial, 'Hiragino Sans GB', STHeiti, 'Microsoft YaHei', 'WenQuanYi Micro Hei', SimSun, Song, sans-serif;
+	font-size: 16px;
+	line-height: 1.6;
+	color: rgb(51, 51, 51);
+	word-wrap: break-word;
+}
+
+a {
+    color: #1980e6;
+    text-decoration: none;
+}
+
+a:hover, a:focus {
+    color: #0f4d8a;
+    text-decoration: underline;
+}
+
+p {
+	margin: 16px 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-size: 16px;
+	margin-top: 32px;
+	margin-bottom: 16px;
+	color: rgb(255, 255, 255);
+    font-weight: bold;
+    border-radius: 3px;
+    display: inline-block;
+    box-shadow: rgb(165, 165, 165) 1px 1px 2px;
+    padding: 8px;
+    background-color: rgb(109, 172, 42);
+}
+
+ul, ol {
+	padding-left: 30px;
+}
+
+pre {
+	word-break: break-all;
+}
+
+blockquote {
+	margin: 10px;
+    padding: 1px 16px;
+    border-color: rgb(109, 172, 42);
+	border-left-style: solid;
+    border-left-width: 6px;
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    box-shadow: rgb(153, 153, 153) 1px 1px 2px;
+    background-color: rgb(243, 243, 243);
+}
+
+pre {
+	word-break: break-all;
+	white-space: pre-wrap;
+}
+
+pre code {
+	display: block;
+	background: #23241f;
+	padding: 1.3em 2em !important;
+	color: #f8f8f2;
+	white-space: pre-wrap;
+}
+
+code {
+	color: #c7254e;
+	background-color: #f9f2f4;
+	border-radius: 4px;
+	font-size: .9em;
+	font-family: "Source Code Pro",monospace;
+}
+
+/*green*/
+
+.nxxxxxx
+{
+	color: #a6e22e;
+}
+
+/*blue*/
+
+.kd
+{
+	color: #66d9ef;
+}
+
+/*white*/
+
+/*red*/
+.o,
+.k
+{
+	color: #f92672;
+}
+
+/*orange*/
+.nxxxxxxxx
+{
+	color: orange;
+}
+
+/*pink*/
+
+.kc
+{
+	color: #bf79db;
+}
+
+.c1,
+.cm
+{
+	color: #75715e;
+}
+
+/*
+Monokai style - ported by Luigi Maselli - http://grigio.org
+*/
+/*
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #272822; color: #ddd;
+}
+
+.hljs-tag,
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-strong,
+.hljs-name {
+  color: #f92672;
+}
+
+.hljs-code {
+  color: #66d9ef;
+}
+
+.hljs-class .hljs-title {
+  color: white;
+}
+
+.hljs-attribute,
+.hljs-symbol,
+.hljs-regexp,
+.hljs-link {
+  color: #bf79db;
+}
+
+.hljs-string,
+.hljs-bullet,
+.hljs-subst,
+.hljs-title,
+.hljs-section,
+.hljs-emphasis,
+.hljs-type,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-addition,
+.hljs-variable,
+.hljs-template-tag,
+.hljs-template-variable {
+  color: #a6e22e;
+}
+
+.hljs-comment,
+.hljs-quote,
+.hljs-deletion,
+.hljs-meta {
+  color: #75715e;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-doctag,
+.hljs-title,
+.hljs-section,
+.hljs-type,
+.hljs-selector-id {
+  font-weight: bold;
+}
+*/

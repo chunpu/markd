@@ -6,7 +6,9 @@ html
 		title= title
 		meta(name='viewport' content='width=device-width')
 		meta(name='renderer' content='webkit')
-		script(src='/public/jquery-1.12.3.min.js')
-		script(src='/public/markdown-preview.js')
+		link(rel='stylesheet' href="/public/style.css")
+		// script(src='/public/jquery-1.12.3.min.js')
+		// script(src='/public/markdown-preview.js')
 	body
-		script(id='raw' type='tmpl')= markdown
+		.main
+			.preview!= markdown

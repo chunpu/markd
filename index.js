@@ -3,8 +3,16 @@ var path = require('path')
 var _ = require('lodash')
 var fs = require('fs')
 var app = express()
+var marked = require('marked')
 
 var port = 8079
+marked.setOptions({
+	highlight: function(code, lang, callback) {
+		require('pygmentize-bundled')({lang: lang, format: 'html'}, code, function(err, result) {
+			callback(err, result.toString())
+		})
+	}
+})
 
 app
 	.engine('jade', require('jade').__express)
@@ -19,9 +27,14 @@ app
 			} else {
 				var str = buf + ''
 				if (_.includes(['.md', '.markdown'], extname)) {
-					res.render('markdown.jade', {
-						markdown: str,
-						title: basename
+					marked(str, function(err, content) {
+						if (!err) {
+							console.log(11111111111111111)
+							res.render('markdown.jade', {
+								markdown: content,
+								title: basename
+							})
+						}
 					})
 					//res.send('xx')
 				} else {
@@ -39,4 +52,4 @@ app
 		}
 	})
 
-app.locals.pretty = true
+// app.locals.pretty = true
