@@ -3,13 +3,17 @@
 	margin: 0;
 }
 
+body {
+    font: 13px / 1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
 .main {
 	width: 740px;
 	margin: 0 auto;
 }
 
 .preview {
-	font-family: 'Helvetica Neue', Arial, 'Hiragino Sans GB', STHeiti, 'Microsoft YaHei', 'WenQuanYi Micro Hei', SimSun, Song, sans-serif;
+	font-family: "Helvetica Neue", Helvetica, "Microsoft YaHei", "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 	font-size: 16px;
 	line-height: 1.6;
 	color: rgb(51, 51, 51);

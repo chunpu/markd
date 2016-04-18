@@ -4,9 +4,19 @@ var _ = require('lodash')
 var fs = require('fs')
 var app = express()
 var marked = require('marked')
+var serveIndex = require('serve-index')
 var pygmentize = require('pygmentize-bundled')
+var basicAuth = require('basic-auth-connect')
 
-var port = 8079
+var config = {}
+
+try {
+	config = require('config.json')
+} catch (e) {}
+
+var port = config.port || 8079
+var host = config.host || '0.0.0.0'
+
 marked.setOptions({
 	highlight: function(code, lang, callback) {
 		var cb = _.once(callback)
@@ -23,13 +33,18 @@ marked.setOptions({
 app
 	.engine('jade', require('jade').__express)
 	.set('views', path.join(__dirname, 'views'))
+	.use(function(req, res, next) {
+		if (_.includes(req.path, 'auth')) {
+			return basicAuth(config.username || 'username', config.password || 'password')(req, res, next)
+		}
+		next()
+	})
+	.use('/preview', serveIndex(path.join(__dirname, 'files')))
 	.use('/preview', function(req, res, next) {
 		var pathname = decodeURIComponent(req.path)
-		console.log('path', pathname)
 		var basename = path.basename(pathname)
 		var extname = path.extname(basename)
-		console.log(extname)
-		fs.readFile(path.join('files', pathname), function(err, buf) {
+		fs.readFile(path.join(__dirname, 'files', pathname), function(err, buf) {
 			if (err) {
 				return res.send(404, err)
 			} else {
@@ -37,7 +52,6 @@ app
 				if (_.includes(['.md', '.markdown'], extname)) {
 					marked(str, _.once(function(err, content) {
 						if (!err) {
-							console.log('ok')
 							return res.render('markdown.jade', {
 								markdown: content,
 								title: basename
@@ -52,12 +66,13 @@ app
 			}
 		})
 	})
-	.use('/public', express.static(path.join(__dirname, '/public')))
-	.listen(port, function(err) {
+	.use('/public', serveIndex(path.join(__dirname, 'public')))
+	.use('/public', express.static(path.join(__dirname, 'public')))
+	.listen(port, host, function(err) {
 		if (err) {
 			console.err(err)
 		} else {
-			console.log('markdown server listen: %d', port)
+			console.log('markdown server listen on %s', host + ':' + port)
 		}
 	})
 
