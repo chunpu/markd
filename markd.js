@@ -11,8 +11,10 @@ var basicAuth = require('basic-auth-connect')
 var config = {}
 
 try {
-	config = require('config.json')
-} catch (e) {}
+	config = require('./config.json')
+} catch (e) {
+	// console.log(e)
+}
 
 var port = config.port || 8079
 var host = config.host || '0.0.0.0'
